@@ -8,17 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("appearancePreference") private var appearancePreference = AppearancePreference.system.rawValue
+    @State private var favoriteStationIDs: Set<String> = ["central-library"]
+
+    private let stations = Station.sampleStations
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            NavigationStack {
+                StationListView(stations: stations, favoriteStationIDs: $favoriteStationIDs)
+            }
+            .tabItem {
+                Label("Stations", systemImage: "tram.fill")
+            }
+
+            NavigationStack {
+                FavoritesView(stations: stations, favoriteStationIDs: $favoriteStationIDs)
+            }
+            .tabItem {
+                Label("Favorites", systemImage: "star.fill")
+            }
+
+            NavigationStack {
+                SettingsView()
+            }
+            .tabItem {
+                Label("Settings", systemImage: "gearshape.fill")
+            }
         }
-        .padding()
+        .preferredColorScheme(
+            AppearancePreference(rawValue: appearancePreference)?.colorScheme
+        )
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
