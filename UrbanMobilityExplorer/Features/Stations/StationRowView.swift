@@ -33,8 +33,6 @@ struct StationRowView: View {
             HStack {
                 Label("\(station.availableBikes) bikes", systemImage: "bicycle")
                 Label("\(station.openDocks) docks", systemImage: "parkingsign.circle")
-                Spacer()
-                AvailabilityBadge(level: station.availabilityLevel)
             }
             .font(.caption)
             .foregroundStyle(.secondary)

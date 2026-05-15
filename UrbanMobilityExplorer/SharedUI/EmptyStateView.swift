@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A view provides empty state capacity
 struct EmptyStateView: View {
     let title: String
     let systemImage: String
