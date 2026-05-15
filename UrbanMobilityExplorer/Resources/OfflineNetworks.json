@@ -1,0 +1,42 @@
+[
+  {
+    "id": "xian-public-bicycle",
+    "name": "Xi'an Public Bicycle",
+    "city": "西安 (Xi'an)",
+    "country": "CN",
+    "latitude": 34.2688,
+    "longitude": 108.9458
+  },
+  {
+    "id": "youbike-putian-city",
+    "name": "YouBike",
+    "city": "莆田市 (Putian City)",
+    "country": "CN",
+    "latitude": 25.454,
+    "longitude": 119.0077
+  },
+  {
+    "id": "aksu",
+    "name": "Aksu",
+    "city": "阿克苏市 (Aksu City)",
+    "country": "CN",
+    "latitude": 41.1664,
+    "longitude": 80.2617
+  },
+  {
+    "id": "aral",
+    "name": "Aral",
+    "city": "阿拉尔市 (Aral)",
+    "country": "CN",
+    "latitude": 40.5477,
+    "longitude": 81.2807
+  },
+  {
+    "id": "kuitunbike",
+    "name": "Kuitun Bike",
+    "city": "奎屯市 (Kuitun)",
+    "country": "CN",
+    "latitude": 44.4234,
+    "longitude": 84.9016
+  }
+]
