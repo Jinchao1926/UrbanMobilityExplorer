@@ -2,6 +2,16 @@
 
 Urban Mobility Explorer is an iOS 16+ SwiftUI app for browsing shared mobility stations, checking station availability, and saving frequently used stations.
 
+## Screenshots
+
+<p>
+  <img src="screenshots/StationList.png" alt="Station list" width="180">
+  <img src="screenshots/Networks.png" alt="Network selection" width="180">
+  <img src="screenshots/StationDetail.png" alt="Station detail" width="180">
+  <img src="screenshots/Favorites.png" alt="Favorites" width="180">
+  <img src="screenshots/Settings.png" alt="Settings" width="180">
+</p>
+
 ## Features
 
 ### Station List
@@ -17,6 +27,7 @@ Urban Mobility Explorer is an iOS 16+ SwiftUI app for browsing shared mobility s
 - Add or remove favorites from the station detail screen.
 - Access saved stations from the Favorites tab.
 - Persist favorites locally across app launches.
+- Keep favorites usable when fresh station data cannot be loaded.
 
 ### Detail View
 

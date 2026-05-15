@@ -11,31 +11,6 @@ struct StationListView: View {
     @ObservedObject var viewModel: StationListViewModel
     @ObservedObject var favoritesViewModel: FavoritesViewModel
 
-    @State private var searchText = ""
-    @State private var sortOption = StationSortOption.mostBikes
-
-    private var allStations: [Station] {
-        content?.stations ?? []
-    }
-
-    private var visibleStations: [Station] {
-        allStations
-            .filter { station in
-                searchText.isEmpty ||
-                station.name.localizedCaseInsensitiveContains(searchText) ||
-                station.address.localizedCaseInsensitiveContains(searchText)
-            }
-            .sorted(using: sortOption)
-    }
-
-    private var isFiltering: Bool {
-        !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-    }
-
-    private var isRefreshing: Bool {
-        content?.isRefreshing == true
-    }
-
     private var content: StationListContent? {
         switch viewModel.state {
         case .loaded(let content), .empty(let content):
@@ -73,9 +48,9 @@ struct StationListView: View {
             }
 
             // Stations
-            if !visibleStations.isEmpty {
+            if !viewModel.visibleStations.isEmpty {
                 Section {
-                    ForEach(visibleStations) { station in
+                    ForEach(viewModel.visibleStations) { station in
                         NavigationLink {
                             StationDetailView(
                                 station: station,
@@ -105,7 +80,7 @@ struct StationListView: View {
             }
         }
         .navigationTitle("Stations")
-        .searchable(text: $searchText, prompt: "Search stations")
+        .searchable(text: $viewModel.searchText, prompt: "Search stations")
         .refreshable {
             await viewModel.loadStations()
             await favoritesViewModel.loadFavorites()
@@ -123,7 +98,7 @@ struct StationListView: View {
             case .empty(let content):
                 stationEmptyState(for: content)
             case .loaded:
-                if visibleStations.isEmpty {
+                if viewModel.visibleStations.isEmpty {
                     EmptyStateView(
                         title: "No Results",
                         systemImage: "magnifyingglass",
@@ -137,7 +112,7 @@ struct StationListView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
-                    Picker("Sort by", selection: $sortOption) {
+                    Picker("Sort by", selection: $viewModel.sortOption) {
                         ForEach(StationSortOption.allCases) { option in
                             Text(option.title).tag(option)
                         }
@@ -174,7 +149,7 @@ struct StationListView: View {
 
     @ViewBuilder
     private func stationEmptyState(for content: StationListContent) -> some View {
-        if isFiltering {
+        if viewModel.isFiltering {
             EmptyStateView(
                 title: "No Results",
                 systemImage: "magnifyingglass",

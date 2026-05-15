@@ -1,122 +1,212 @@
 {
-  "aksu": [
-    {
-      "id": "aksu-offline-renmin-square",
-      "name": "人民广场",
-      "address": "阿克苏市中心",
-      "availableBikes": 8,
-      "openDocks": 10,
-      "latitude": 41.1701,
-      "longitude": 80.2604,
-      "lastUpdated": "Offline sample"
-    },
-    {
-      "id": "aksu-offline-station-road",
-      "name": "火车站前",
-      "address": "交通路",
-      "availableBikes": 3,
-      "openDocks": 15,
-      "latitude": 41.1628,
-      "longitude": 80.2741,
-      "lastUpdated": "Offline sample"
-    }
-  ],
-  "aral": [
-    {
-      "id": "aral-offline-university",
-      "name": "塔里木大学",
-      "address": "大学路",
-      "availableBikes": 14,
-      "openDocks": 6,
-      "latitude": 40.5417,
-      "longitude": 81.2862,
-      "lastUpdated": "Offline sample"
-    },
-    {
-      "id": "aral-offline-cultural-center",
-      "name": "文化中心",
-      "address": "幸福路",
-      "availableBikes": 5,
-      "openDocks": 11,
-      "latitude": 40.5504,
-      "longitude": 81.2796,
-      "lastUpdated": "Offline sample"
-    }
-  ],
-  "kuitunbike": [
-    {
-      "id": "kuitunbike-offline-city-hall",
-      "name": "市政广场",
-      "address": "北京西路",
-      "availableBikes": 9,
-      "openDocks": 7,
-      "latitude": 44.4252,
-      "longitude": 84.8998,
-      "lastUpdated": "Offline sample"
-    },
-    {
-      "id": "kuitunbike-offline-market",
-      "name": "团结市场",
-      "address": "团结南街",
-      "availableBikes": 2,
-      "openDocks": 18,
-      "latitude": 44.4199,
-      "longitude": 84.9051,
-      "lastUpdated": "Offline sample"
-    }
-  ],
   "xian-public-bicycle": [
     {
       "id": "xian-public-bicycle-offline-qingxicun",
       "name": "青西村",
-      "address": "民经一路西，凤城九路南侧人行道第一城北门售楼部前",
+      "address": "未央区民经一路西侧，凤城九路南侧",
       "availableBikes": 12,
       "openDocks": 8,
       "latitude": 34.3531,
       "longitude": 108.9288,
-      "lastUpdated": "Offline sample"
+      "lastUpdated": "Offline sample (2026-05-15)"
     },
     {
-      "id": "xian-public-bicycle-offline-dayanta",
+      "id": "xian-public-bicycle-offline-dayanta-north",
       "name": "大雁塔北广场",
-      "address": "雁塔区",
+      "address": "雁塔区雁塔北路，大雁塔景区北入口",
       "availableBikes": 4,
       "openDocks": 16,
       "latitude": 34.2246,
       "longitude": 108.9631,
-      "lastUpdated": "Offline sample"
+      "lastUpdated": "Offline sample (2026-05-15)"
     },
     {
       "id": "xian-public-bicycle-offline-bell-tower",
       "name": "钟楼",
-      "address": "碑林区",
+      "address": "碑林区北大街与东西大街交会处",
       "availableBikes": 1,
       "openDocks": 19,
-      "latitude": 34.261,
+      "latitude": 34.2610,
       "longitude": 108.9422,
-      "lastUpdated": "Offline sample"
+      "lastUpdated": "Offline sample (2026-05-15)"
+    },
+    {
+      "id": "xian-public-bicycle-offline-xiaozhai",
+      "name": "小寨十字",
+      "address": "雁塔区长安中路，小寨地铁站附近",
+      "availableBikes": 18,
+      "openDocks": 5,
+      "latitude": 34.2292,
+      "longitude": 108.9470,
+      "lastUpdated": "Offline sample (2026-05-15)"
     }
   ],
   "youbike-putian-city": [
     {
       "id": "youbike-putian-city-offline-city-square",
       "name": "市政府广场",
-      "address": "荔城区",
+      "address": "荔城区东园东路，市政府南侧",
       "availableBikes": 10,
       "openDocks": 9,
       "latitude": 25.4528,
       "longitude": 119.0105,
-      "lastUpdated": "Offline sample"
+      "lastUpdated": "Offline sample (2026-05-15)"
     },
     {
       "id": "youbike-putian-city-offline-wanda",
       "name": "万达广场",
-      "address": "城厢区",
+      "address": "城厢区荔华东大道，万达广场北门",
       "availableBikes": 6,
       "openDocks": 12,
       "latitude": 25.4388,
       "longitude": 119.0016,
-      "lastUpdated": "Offline sample"
+      "lastUpdated": "Offline sample (2026-05-15)"
+    },
+    {
+      "id": "youbike-putian-city-offline-railway-station",
+      "name": "莆田火车站",
+      "address": "秀屿区笏石镇，莆田站公交换乘区",
+      "availableBikes": 15,
+      "openDocks": 4,
+      "latitude": 25.3558,
+      "longitude": 119.1324,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    },
+    {
+      "id": "youbike-putian-city-offline-putian-university",
+      "name": "莆田学院",
+      "address": "城厢区学园中街，莆田学院正门",
+      "availableBikes": 3,
+      "openDocks": 17,
+      "latitude": 25.4440,
+      "longitude": 119.0051,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    }
+  ],
+  "aksu": [
+    {
+      "id": "aksu-offline-renmin-square",
+      "name": "人民广场",
+      "address": "阿克苏市北京路，人民广场东侧",
+      "availableBikes": 8,
+      "openDocks": 10,
+      "latitude": 41.1701,
+      "longitude": 80.2604,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    },
+    {
+      "id": "aksu-offline-railway-station",
+      "name": "阿克苏火车站",
+      "address": "阿克苏市交通路，火车站广场",
+      "availableBikes": 3,
+      "openDocks": 15,
+      "latitude": 41.1628,
+      "longitude": 80.2741,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    },
+    {
+      "id": "aksu-offline-duolang-river",
+      "name": "多浪河景观带",
+      "address": "阿克苏市多浪河二期步道入口",
+      "availableBikes": 11,
+      "openDocks": 7,
+      "latitude": 41.1546,
+      "longitude": 80.2572,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    },
+    {
+      "id": "aksu-offline-museum",
+      "name": "阿克苏地区博物馆",
+      "address": "阿克苏市南大街，地区博物馆西门",
+      "availableBikes": 2,
+      "openDocks": 20,
+      "latitude": 41.1667,
+      "longitude": 80.2459,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    }
+  ],
+  "aral": [
+    {
+      "id": "aral-offline-tarim-university",
+      "name": "塔里木大学",
+      "address": "阿拉尔市大学路，塔里木大学东门",
+      "availableBikes": 14,
+      "openDocks": 6,
+      "latitude": 40.5417,
+      "longitude": 81.2862,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    },
+    {
+      "id": "aral-offline-cultural-center",
+      "name": "文化中心",
+      "address": "阿拉尔市幸福路，文化中心南侧",
+      "availableBikes": 5,
+      "openDocks": 11,
+      "latitude": 40.5504,
+      "longitude": 81.2796,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    },
+    {
+      "id": "aral-offline-government-service",
+      "name": "政务服务中心",
+      "address": "阿拉尔市军垦大道，政务服务中心入口",
+      "availableBikes": 9,
+      "openDocks": 8,
+      "latitude": 40.5463,
+      "longitude": 81.2828,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    },
+    {
+      "id": "aral-offline-sanwujiu-square",
+      "name": "三五九旅文化广场",
+      "address": "阿拉尔市胜利大道，三五九旅文化广场",
+      "availableBikes": 1,
+      "openDocks": 18,
+      "latitude": 40.5529,
+      "longitude": 81.2703,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    }
+  ],
+  "kuitunbike": [
+    {
+      "id": "kuitunbike-offline-city-hall",
+      "name": "市政广场",
+      "address": "奎屯市北京西路，市政广场北侧",
+      "availableBikes": 9,
+      "openDocks": 7,
+      "latitude": 44.4252,
+      "longitude": 84.8998,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    },
+    {
+      "id": "kuitunbike-offline-tuanjie-market",
+      "name": "团结市场",
+      "address": "奎屯市团结南街，团结市场西门",
+      "availableBikes": 2,
+      "openDocks": 18,
+      "latitude": 44.4199,
+      "longitude": 84.9051,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    },
+    {
+      "id": "kuitunbike-offline-railway-station",
+      "name": "奎屯火车站",
+      "address": "奎屯市团结北街，火车站出站口",
+      "availableBikes": 16,
+      "openDocks": 5,
+      "latitude": 44.4325,
+      "longitude": 84.9015,
+      "lastUpdated": "Offline sample (2026-05-15)"
+    },
+    {
+      "id": "kuitunbike-offline-friendship-mall",
+      "name": "友好商场",
+      "address": "奎屯市乌鲁木齐东路，友好商场南侧",
+      "availableBikes": 4,
+      "openDocks": 13,
+      "latitude": 44.4208,
+      "longitude": 84.8956,
+      "lastUpdated": "Offline sample (2026-05-15)"
     }
   ]
 }
