@@ -9,26 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("appearancePreference") private var appearancePreference = AppearancePreference.system.rawValue
-    @State private var favoriteStationIDs: Set<String> = ["central-library"]
+    @StateObject private var stationListViewModel: StationListViewModel
+    @StateObject private var favoritesViewModel: FavoritesViewModel
 
-    private let stations = Station.sampleStations
+    init(container: AppContainer = AppContainer()) {
+        _stationListViewModel = StateObject(wrappedValue: container.makeStationListViewModel())
+        _favoritesViewModel = StateObject(wrappedValue: container.makeFavoritesViewModel())
+    }
 
     var body: some View {
         TabView {
+            // Stations
             NavigationStack {
-                StationListView(stations: stations, favoriteStationIDs: $favoriteStationIDs)
+                StationListView(
+                    viewModel: stationListViewModel,
+                    favoritesViewModel: favoritesViewModel
+                )
             }
             .tabItem {
                 Label("Stations", systemImage: "tram.fill")
             }
 
+            // Favorites
             NavigationStack {
-                FavoritesView(stations: stations, favoriteStationIDs: $favoriteStationIDs)
+                FavoritesView(viewModel: favoritesViewModel)
             }
             .tabItem {
                 Label("Favorites", systemImage: "star.fill")
             }
 
+            // Settings
             NavigationStack {
                 SettingsView()
             }

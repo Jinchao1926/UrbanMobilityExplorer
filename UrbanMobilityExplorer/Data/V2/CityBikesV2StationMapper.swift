@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Adapter for mapping CityBikes API V2 data structures to the app's standardized model format.
 enum CityBikesV2StationMapper {
     static func mapNetworks(from data: Data) throws -> [Network] {
         let response = try JSONDecoder().decode(NetworksResponse.self, from: data)
