@@ -10,5 +10,5 @@ protocol FavoritesRepository {
 
     func isFavorite(stationID: String) async throws -> Bool
 
-    func toggleFavorite(station: Station, networkID: String) async throws -> Bool
+    func saveFavorites(_ favorites: [FavoriteStation]) async throws -> [FavoriteStation]
 }
