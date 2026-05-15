@@ -21,7 +21,7 @@ struct StationCell: View {
                         .lineLimit(2)
                         .fixedSize(horizontal: false, vertical: true)
 
-                    Text(station.neighborhood)
+                    Text(station.address)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)

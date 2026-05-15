@@ -23,7 +23,7 @@ struct StationListView: View {
             .filter { station in
                 searchText.isEmpty ||
                 station.name.localizedCaseInsensitiveContains(searchText) ||
-                station.neighborhood.localizedCaseInsensitiveContains(searchText)
+                station.address.localizedCaseInsensitiveContains(searchText)
             }
             .sorted(using: sortOption)
     }
