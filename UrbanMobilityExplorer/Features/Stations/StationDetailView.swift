@@ -89,7 +89,7 @@ struct StationDetailView: View {
             }
         }
         .task {
-            await favoritesViewModel.refreshFavoriteStatus(for: station.id)
+            await favoritesViewModel.refreshFavoriteStatus()
         }
     }
 }

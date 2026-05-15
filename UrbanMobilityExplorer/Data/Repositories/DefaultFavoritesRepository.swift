@@ -23,17 +23,8 @@ struct DefaultFavoritesRepository: FavoritesRepository {
         try await cache.loadFavorites().contains { $0.id == stationID }
     }
 
-    func toggleFavorite(station: Station, networkID: String) async throws -> Bool {
-        var favorites = try await cache.loadFavorites()
-
-        if let index = favorites.firstIndex(where: { $0.id == station.id }) {
-            favorites.remove(at: index)
-            try await cache.saveFavorites(favorites)
-            return false
-        }
-
-        favorites.append(FavoriteStation(station: station, networkID: networkID))
+    func saveFavorites(_ favorites: [FavoriteStation]) async throws -> [FavoriteStation] {
         try await cache.saveFavorites(favorites)
-        return true
+        return favorites.sorted { $0.savedAt > $1.savedAt }
     }
 }
