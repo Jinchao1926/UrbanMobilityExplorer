@@ -3,7 +3,7 @@
     {
       "id": "aksu-offline-renmin-square",
       "name": "人民广场",
-      "neighborhood": "阿克苏市中心",
+      "address": "阿克苏市中心",
       "availableBikes": 8,
       "openDocks": 10,
       "latitude": 41.1701,
@@ -13,7 +13,7 @@
     {
       "id": "aksu-offline-station-road",
       "name": "火车站前",
-      "neighborhood": "交通路",
+      "address": "交通路",
       "availableBikes": 3,
       "openDocks": 15,
       "latitude": 41.1628,
@@ -25,7 +25,7 @@
     {
       "id": "aral-offline-university",
       "name": "塔里木大学",
-      "neighborhood": "大学路",
+      "address": "大学路",
       "availableBikes": 14,
       "openDocks": 6,
       "latitude": 40.5417,
@@ -35,7 +35,7 @@
     {
       "id": "aral-offline-cultural-center",
       "name": "文化中心",
-      "neighborhood": "幸福路",
+      "address": "幸福路",
       "availableBikes": 5,
       "openDocks": 11,
       "latitude": 40.5504,
@@ -47,7 +47,7 @@
     {
       "id": "kuitunbike-offline-city-hall",
       "name": "市政广场",
-      "neighborhood": "北京西路",
+      "address": "北京西路",
       "availableBikes": 9,
       "openDocks": 7,
       "latitude": 44.4252,
@@ -57,7 +57,7 @@
     {
       "id": "kuitunbike-offline-market",
       "name": "团结市场",
-      "neighborhood": "团结南街",
+      "address": "团结南街",
       "availableBikes": 2,
       "openDocks": 18,
       "latitude": 44.4199,
@@ -69,7 +69,7 @@
     {
       "id": "xian-public-bicycle-offline-qingxicun",
       "name": "青西村",
-      "neighborhood": "民经一路西，凤城九路南侧人行道第一城北门售楼部前",
+      "address": "民经一路西，凤城九路南侧人行道第一城北门售楼部前",
       "availableBikes": 12,
       "openDocks": 8,
       "latitude": 34.3531,
@@ -79,7 +79,7 @@
     {
       "id": "xian-public-bicycle-offline-dayanta",
       "name": "大雁塔北广场",
-      "neighborhood": "雁塔区",
+      "address": "雁塔区",
       "availableBikes": 4,
       "openDocks": 16,
       "latitude": 34.2246,
@@ -89,7 +89,7 @@
     {
       "id": "xian-public-bicycle-offline-bell-tower",
       "name": "钟楼",
-      "neighborhood": "碑林区",
+      "address": "碑林区",
       "availableBikes": 1,
       "openDocks": 19,
       "latitude": 34.261,
@@ -101,7 +101,7 @@
     {
       "id": "youbike-putian-city-offline-city-square",
       "name": "市政府广场",
-      "neighborhood": "荔城区",
+      "address": "荔城区",
       "availableBikes": 10,
       "openDocks": 9,
       "latitude": 25.4528,
@@ -111,7 +111,7 @@
     {
       "id": "youbike-putian-city-offline-wanda",
       "name": "万达广场",
-      "neighborhood": "城厢区",
+      "address": "城厢区",
       "availableBikes": 6,
       "openDocks": 12,
       "latitude": 25.4388,

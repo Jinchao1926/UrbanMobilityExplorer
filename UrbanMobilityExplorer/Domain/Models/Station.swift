@@ -11,7 +11,7 @@ import Foundation
 struct Station: Identifiable, Codable, Hashable, Sendable {
     let id: String
     let name: String
-    let neighborhood: String
+    let address: String
     let availableBikes: Int
     let openDocks: Int
     let latitude: Double

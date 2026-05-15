@@ -40,7 +40,7 @@ enum CityBikesV2StationMapper {
             Station(
                 id: "\(network.id)-\(station.id)",
                 name: station.name,
-                neighborhood: station.extra?.address ?? network.location.city,
+                address: station.extra?.address ?? network.location.city,
                 availableBikes: station.freeBikes ?? 0,
                 openDocks: station.emptySlots ?? 0,
                 latitude: station.latitude,
