@@ -5,7 +5,7 @@
 //  Created by Jinchao Lin on 2026/5/15.
 //
 
-enum StationDataSource: String, Codable, Equatable, Sendable {
+nonisolated enum StationDataSource: String, Codable, Equatable, Sendable {
     case live
     case cached
     case offline
@@ -22,7 +22,7 @@ enum StationDataSource: String, Codable, Equatable, Sendable {
     }
 }
 
-struct StationLoadResult: Sendable {
+nonisolated struct StationLoadResult: Sendable {
     let stations: [Station]
     let source: StationDataSource
 }

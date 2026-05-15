@@ -8,7 +8,7 @@
 import Foundation
 
 /// The `Station` structure
-struct Station: Identifiable, Codable, Hashable, Sendable {
+nonisolated struct Station: Identifiable, Codable, Hashable, Sendable {
     let id: String
     let name: String
     let address: String

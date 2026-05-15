@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum StationSortOption: String, CaseIterable, Identifiable, Sendable {
+nonisolated enum StationSortOption: String, CaseIterable, Identifiable, Sendable {
     case mostBikes
     case mostDocks
     case name

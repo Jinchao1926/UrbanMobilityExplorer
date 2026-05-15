@@ -10,7 +10,7 @@ import Foundation
 /// Native URLSession implementation conforming to `HTTPClient`.
 /// The CityBikes API requires no authentication tokens or custom request interceptors.
 /// Therefore, Alamofire is not adopted to avoid unnecessary third-party dependencies.
-struct URLSessionHTTPClient: HTTPClient {
+nonisolated struct URLSessionHTTPClient: HTTPClient {
     private let session: URLSession
 
     init(session: URLSession = .shared) {
