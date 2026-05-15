@@ -8,7 +8,6 @@
 import Combine
 import Foundation
 
-@MainActor
 final class StationListViewModel: ObservableObject {
     @Published private(set) var state: StationListViewState = .loading
     @Published private(set) var networks: [Network] = []

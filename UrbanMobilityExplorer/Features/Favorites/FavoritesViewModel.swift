@@ -8,7 +8,6 @@
 import Combine
 import Foundation
 
-@MainActor
 final class FavoritesViewModel: ObservableObject {
     @Published private(set) var state: FavoritesViewState = .loading
     @Published private(set) var favoriteIDs: Set<String> = []
