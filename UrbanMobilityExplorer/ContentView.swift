@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("appearancePreference") private var appearancePreference = AppearancePreference.system.rawValue
+    @AppStorage(AppearancePreference.storageKey)
+    private var appearancePreference = AppearancePreference.defaultValue
+
     @StateObject private var stationListViewModel: StationListViewModel
     @StateObject private var favoritesViewModel: FavoritesViewModel
 
@@ -46,9 +48,7 @@ struct ContentView: View {
                 Label("Settings", systemImage: "gearshape.fill")
             }
         }
-        .preferredColorScheme(
-            AppearancePreference(rawValue: appearancePreference)?.colorScheme
-        )
+        .preferredColorScheme(appearancePreference.colorScheme)
     }
 }
 
