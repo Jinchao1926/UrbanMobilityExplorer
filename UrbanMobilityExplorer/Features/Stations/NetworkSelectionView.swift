@@ -20,21 +20,37 @@ struct NetworkSelectionView: View {
             network.country.localizedCaseInsensitiveContains(searchText)
         }
     }
+    
+    private var chinaOnlyBinding: Binding<Bool> {
+        Binding(
+            get: { viewModel.showsOnlyChinaNetworks },
+            set: { newValue in
+                Task {
+                    await viewModel.setShowsOnlyChinaNetworks(newValue)
+                }
+            }
+        )
+    }
 
+    // MARK: - UI
     var body: some View {
         List {
             Section {
                 Toggle("China networks only", isOn: chinaOnlyBinding)
             } footer: {
-                Text("Turn this off to browse every CityBikes network returned by the live directory.")
+                Text("Turn this off to browse every CityBikes network.")
             }
 
             Section("Networks") {
                 ForEach(visibleNetworks) { network in
                     Button {
+                        let shouldReload = viewModel.selectNetwork(network)
+                        dismiss()
+
+                        // Reload stations when network changed
+                        guard shouldReload else { return }
                         Task {
-                            await viewModel.selectNetwork(network)
-                            dismiss()
+                            await viewModel.loadStations()
                         }
                     } label: {
                         HStack(alignment: .firstTextBaseline, spacing: 12) {
@@ -60,17 +76,10 @@ struct NetworkSelectionView: View {
             }
         }
         .navigationTitle("Networks")
-        .searchable(text: $searchText, prompt: "Search networks")
-    }
-
-    private var chinaOnlyBinding: Binding<Bool> {
-        Binding(
-            get: { viewModel.showsOnlyChinaNetworks },
-            set: { newValue in
-                Task {
-                    await viewModel.setShowsOnlyChinaNetworks(newValue)
-                }
-            }
+        .searchable(
+            text: $searchText,
+            placement: .navigationBarDrawer(displayMode: .always),
+            prompt: "Search networks"
         )
     }
 }
