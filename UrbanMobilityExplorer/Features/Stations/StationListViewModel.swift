@@ -14,14 +14,14 @@ final class StationListViewModel: ObservableObject {
     @Published private(set) var networks: [Network] = []
     @Published private(set) var selectedNetwork: Network?
     @Published var showsOnlyChinaNetworks = true
-    
+
     private let loadNetworksUseCase: LoadNetworksUseCase
     private let loadStationsUseCase: LoadStationsUseCase
 
     private var stations: [Station] = []
     private var source: StationDataSource = .offline
     private var message: String?
-    
+
     // MARK: - LifeCycle
     init(
         loadNetworks: LoadNetworksUseCase,
@@ -42,10 +42,10 @@ extension StationListViewModel {
         } else {
             state = .loading
         }
-        
+
         do {
             try await refreshNetworks(onlyChina: showsOnlyChinaNetworks)
-            
+
             guard let selectedNetwork else {
                 stations = []
                 source = .offline
@@ -53,7 +53,7 @@ extension StationListViewModel {
                 publish(isRefreshing: false)
                 return
             }
-            
+
             let result = try await loadStationsUseCase(for: selectedNetwork)
             stations = result.stations
             source = result.source
@@ -77,15 +77,15 @@ extension StationListViewModel {
     @discardableResult
     func selectNetwork(_ network: Network) -> Bool {
         guard network.id != selectedNetwork?.id else { return false }
-        
+
         selectedNetwork = network
         resetStations()
         return true
     }
-    
+
     func setShowsOnlyChinaNetworks(_ newValue: Bool) async {
         guard newValue != showsOnlyChinaNetworks else { return }
-        
+
         showsOnlyChinaNetworks = newValue
         resetStations()
         await loadStations()

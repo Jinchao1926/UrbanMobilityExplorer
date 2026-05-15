@@ -15,7 +15,7 @@ struct Network: Identifiable, Codable, Hashable, Sendable {
     let country: String
     let latitude: Double
     let longitude: Double
-    
+
     var displayName: String {
         "\(city) - \(name)"
     }

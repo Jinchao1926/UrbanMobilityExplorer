@@ -80,12 +80,16 @@ struct StationListView: View {
                             StationDetailView(
                                 station: station,
                                 networkID: content?.selectedNetwork?.id ?? "",
+                                networkName: content?.selectedNetwork?.displayName,
                                 favoritesViewModel: favoritesViewModel
                             )
                         } label: {
                             StationCell(
                                 station: station,
-                                isFavorite: favoritesViewModel.isFavorite(stationID: station.id)
+                                isFavorite: favoritesViewModel.isFavorite(
+                                    stationID: station.id,
+                                    networkID: content?.selectedNetwork?.id ?? ""
+                                )
                             )
                         }
                         .accessibilityIdentifier("station-row-\(station.id)")
@@ -93,7 +97,10 @@ struct StationListView: View {
                 } header: {
                     Text("Nearby availability")
                 } footer: {
-                    Text("Live availability from CityBikes v2. Offline sample data is shown if the network is unavailable.")
+                    Text(
+                        "Live availability from CityBikes v2. " +
+                        "Offline sample data is shown if the network is unavailable."
+                    )
                 }
             }
         }
@@ -128,7 +135,6 @@ struct StationListView: View {
             }
         }
         .toolbar {
-            // Sorting
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Picker("Sort by", selection: $sortOption) {

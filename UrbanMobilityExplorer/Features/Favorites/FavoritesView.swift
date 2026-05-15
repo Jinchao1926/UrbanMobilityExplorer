@@ -21,6 +21,7 @@ struct FavoritesView: View {
                         StationDetailView(
                             station: favorite.station,
                             networkID: favorite.networkID,
+                            networkName: favorite.networkName,
                             favoritesViewModel: viewModel
                         )
                     } label: {

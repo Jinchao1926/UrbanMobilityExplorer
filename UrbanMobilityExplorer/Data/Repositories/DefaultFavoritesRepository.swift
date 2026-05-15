@@ -19,8 +19,11 @@ struct DefaultFavoritesRepository: FavoritesRepository {
             .sorted { $0.savedAt > $1.savedAt }
     }
 
-    func isFavorite(stationID: String) async throws -> Bool {
-        try await cache.loadFavorites().contains { $0.id == stationID }
+    func isFavorite(stationID: String, networkID: String) async throws -> Bool {
+        let favoriteID = FavoriteStation.id(stationID: stationID, networkID: networkID)
+
+        return try await cache.loadFavorites()
+            .contains { $0.id == favoriteID }
     }
 
     func saveFavorites(_ favorites: [FavoriteStation]) async throws -> [FavoriteStation] {

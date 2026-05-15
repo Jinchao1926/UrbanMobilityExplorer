@@ -12,7 +12,7 @@ struct IsFavoriteStationUseCase {
         self.repository = repository
     }
 
-    func callAsFunction(stationID: String) async throws -> Bool {
-        try await repository.isFavorite(stationID: stationID)
+    func callAsFunction(stationID: String, networkID: String) async throws -> Bool {
+        try await repository.isFavorite(stationID: stationID, networkID: networkID)
     }
 }
