@@ -10,16 +10,21 @@ import SwiftUI
 struct StationDetailView: View {
     let station: Station
     let networkID: String
+    let networkName: String?
     @ObservedObject var favoritesViewModel: FavoritesViewModel
-    
+
     private var coordinateText: String {
         "\(formattedCoordinate(station.latitude)), \(formattedCoordinate(station.longitude))"
     }
-    
-    private var isFavorite: Bool {
-        favoritesViewModel.isFavorite(stationID: station.id)
+
+    private var networkDisplayName: String {
+        networkName?.nilIfBlank ?? networkID
     }
-    
+
+    private var isFavorite: Bool {
+        favoritesViewModel.isFavorite(stationID: station.id, networkID: networkID)
+    }
+
     // MARK: - UI
     var body: some View {
         List {
@@ -29,13 +34,21 @@ struct StationDetailView: View {
                         Text(station.name)
                             .font(.title2.weight(.semibold))
                     }
-                    
+
                     Text(station.address)
                         .foregroundStyle(.secondary)
                 }
                 .padding(.vertical, 4)
             }
-            
+
+            Section("Network") {
+                StationDetailCell(
+                    title: "Name",
+                    value: networkDisplayName,
+                    systemImage: "network"
+                )
+            }
+
             Section("Current status") {
                 StationDetailCell(
                     title: "Available bikes",
@@ -53,7 +66,7 @@ struct StationDetailView: View {
                     systemImage: "clock"
                 )
             }
-            
+
             Section("Location") {
                 StationDetailCell(
                     title: "Address",
@@ -77,6 +90,7 @@ struct StationDetailView: View {
                         await favoritesViewModel.toggleFavorite(
                             station: station,
                             networkID: networkID,
+                            networkName: networkDisplayName,
                             isFavorite: shouldFavorite
                         )
                     }
@@ -98,5 +112,12 @@ struct StationDetailView: View {
 private extension StationDetailView {
     func formattedCoordinate(_ coordinate: Double) -> String {
         coordinate.formatted(.number.precision(.fractionLength(4)))
+    }
+}
+
+private extension String {
+    var nilIfBlank: String? {
+        let trimmed = trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty ? nil : trimmed
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Jinchao Lin on 2026/5/15.
 //
 
-nonisolated enum FavoritesViewState: Equatable {
+enum FavoritesViewState: Equatable {
     case loading
     case loaded([FavoriteStation])
     case empty

@@ -8,7 +8,7 @@
 protocol FavoritesRepository {
     func loadFavorites() async throws -> [FavoriteStation]
 
-    func isFavorite(stationID: String) async throws -> Bool
+    func isFavorite(stationID: String, networkID: String) async throws -> Bool
 
     func saveFavorites(_ favorites: [FavoriteStation]) async throws -> [FavoriteStation]
 }

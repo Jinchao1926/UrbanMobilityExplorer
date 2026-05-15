@@ -17,7 +17,7 @@ struct URLSessionHTTPClient: HTTPClient {
         self.session = session
     }
 
-    nonisolated func data(from url: URL) async throws -> Data {
+    func data(from url: URL) async throws -> Data {
         let (data, response) = try await session.data(from: url)
 
         guard let httpResponse = response as? HTTPURLResponse,

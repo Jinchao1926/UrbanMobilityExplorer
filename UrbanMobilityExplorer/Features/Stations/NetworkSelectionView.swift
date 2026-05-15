@@ -20,7 +20,7 @@ struct NetworkSelectionView: View {
             network.country.localizedCaseInsensitiveContains(searchText)
         }
     }
-    
+
     private var chinaOnlyBinding: Binding<Bool> {
         Binding(
             get: { viewModel.showsOnlyChinaNetworks },

@@ -44,8 +44,9 @@ final class FavoritesViewModel: ObservableObject {
         }
     }
 
-    func isFavorite(stationID: String) -> Bool {
-        favoriteIDs.contains(stationID)
+    func isFavorite(stationID: String, networkID: String) -> Bool {
+        let favoriteID = FavoriteStation.id(stationID: stationID, networkID: networkID)
+        return favoriteIDs.contains(favoriteID)
     }
 
     func refreshFavoriteStatus() async {
@@ -57,6 +58,7 @@ final class FavoritesViewModel: ObservableObject {
     func toggleFavorite(
         station: Station,
         networkID: String,
+        networkName: String?,
         isFavorite: Bool
     ) async {
         await refreshFavoriteStatus()
@@ -65,6 +67,7 @@ final class FavoritesViewModel: ObservableObject {
             let favorites = try await toggleFavoriteUseCase(
                 station: station,
                 networkID: networkID,
+                networkName: networkName,
                 isFavorite: isFavorite,
                 currentFavorites: favorites
             )

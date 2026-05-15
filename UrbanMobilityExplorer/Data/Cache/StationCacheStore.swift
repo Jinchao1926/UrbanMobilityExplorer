@@ -12,7 +12,7 @@ actor StationCacheStore: StationCacheProvider {
     private let directoryURL: URL
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
-    
+
     // MARK: - LifeCycle
     init(directoryURL: URL? = nil) {
         let baseURL = directoryURL ?? FileManager.default.urls(
@@ -31,12 +31,12 @@ extension StationCacheStore {
         let data = try encoder.encode(networks)
         try data.write(to: networksURL, options: [.atomic])
     }
-    
+
     func loadNetworks() async throws -> [Network] {
         guard FileManager.default.fileExists(atPath: networksURL.path()) else {
             return []
         }
-        
+
         let data = try Data(contentsOf: networksURL)
         return try decoder.decode([Network].self, from: data)
     }
@@ -49,13 +49,13 @@ extension StationCacheStore {
         let data = try encoder.encode(stations)
         try data.write(to: stationsURL(for: networkID), options: [.atomic])
     }
-    
+
     func loadStations(for network: Network) async throws -> [Station] {
         let url = stationsURL(for: network.id)
         guard FileManager.default.fileExists(atPath: url.path()) else {
             return []
         }
-        
+
         let data = try Data(contentsOf: url)
         return try decoder.decode([Station].self, from: data)
     }
