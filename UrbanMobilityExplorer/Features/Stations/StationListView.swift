@@ -12,7 +12,7 @@ struct StationListView: View {
     @ObservedObject var favoritesViewModel: FavoritesViewModel
 
     @State private var searchText = ""
-    @State private var sortOption = StationSortOption.availability
+    @State private var sortOption = StationSortOption.mostBikes
 
     private var allStations: [Station] {
         content?.stations ?? []
@@ -127,19 +127,9 @@ struct StationListView: View {
                 }
             }
         }
-        /*
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    sortOption = .availability
-                    searchText = ""
-                } label: {
-                    Label("Clear", systemImage: "line.3.horizontal.decrease.circle")
-                }
-                .disabled(searchText.isEmpty && sortOption == .availability)
-            }
-
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
+            // Sorting
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Picker("Sort by", selection: $sortOption) {
                         ForEach(StationSortOption.allCases) { option in
@@ -147,25 +137,13 @@ struct StationListView: View {
                         }
                     }
                 } label: {
-                    Label("Sort", systemImage: "arrow.up.arrow.down")
+                    Image(systemName: "arrow.up.arrow.down")
+                        .frame(width: 32, height: 32)
+                        .contentShape(Rectangle())
                 }
-
-                Button {
-                    Task {
-                        await viewModel.loadStations()
-                        await favoritesViewModel.loadFavorites()
-                    }
-                } label: {
-                    if isRefreshing {
-                        ProgressView()
-                    } else {
-                        Label("Refresh", systemImage: "arrow.clockwise")
-                    }
-                }
-                .disabled(isRefreshing)
+                .accessibilityLabel("Sort")
             }
         }
-         */
         .task {
             await viewModel.loadStations()
             await favoritesViewModel.loadFavorites()
