@@ -27,7 +27,7 @@ actor FavoritesCacheStore: FavoritesCacheProvider {
 
     // MARK: - Favorites
     func loadFavorites() async throws -> [FavoriteStation] {
-        guard FileManager.default.fileExists(atPath: fileURL.path()) else {
+        guard FileManager.default.fileExists(atPath: fileURL.path) else {
             return []
         }
 

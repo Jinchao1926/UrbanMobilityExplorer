@@ -32,8 +32,7 @@ final class AppContainer {
     func makeFavoritesViewModel() -> FavoritesViewModel {
         FavoritesViewModel(
             loadFavorites: LoadFavoritesUseCase(repository: favoritesRepository),
-            toggleFavorite: ToggleFavoriteUseCase(repository: favoritesRepository),
-            isFavoriteStation: IsFavoriteStationUseCase(repository: favoritesRepository)
+            toggleFavorite: ToggleFavoriteUseCase(repository: favoritesRepository)
         )
     }
 }
