@@ -7,7 +7,9 @@
 
 import Foundation
 
-// URLSession is sufficient for the current project, Almofire will not be used for now.
+/// Native URLSession implementation conforming to `HTTPClient`.
+/// The CityBikes API requires no authentication tokens or custom request interceptors.
+/// Therefore, Alamofire is not adopted to avoid unnecessary third-party dependencies.
 struct URLSessionHTTPClient: HTTPClient {
     private let session: URLSession
 
