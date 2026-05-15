@@ -54,7 +54,7 @@ struct StationListView: View {
                     NetworkSelectionView(viewModel: viewModel)
                 } label: {
                     LabeledContent("Network") {
-                        Text(content?.selectedNetwork?.displayName ?? "Select")
+                        Text(viewModel.selectedNetwork?.displayName ?? "Select")
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.trailing)
                     }

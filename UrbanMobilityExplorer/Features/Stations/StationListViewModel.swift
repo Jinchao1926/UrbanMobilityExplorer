@@ -74,20 +74,20 @@ extension StationListViewModel {
 
 // MARK: - Network
 extension StationListViewModel {
-    func selectNetwork(_ network: Network) async {
-        guard network.id != selectedNetwork?.id else { return }
+    @discardableResult
+    func selectNetwork(_ network: Network) -> Bool {
+        guard network.id != selectedNetwork?.id else { return false }
         
         selectedNetwork = network
-        resetContentForReload()
-        await loadStations()
+        resetStations()
+        return true
     }
     
     func setShowsOnlyChinaNetworks(_ newValue: Bool) async {
         guard newValue != showsOnlyChinaNetworks else { return }
         
         showsOnlyChinaNetworks = newValue
-        selectedNetwork = nil
-        resetContentForReload()
+        resetStations()
         await loadStations()
     }
 }
@@ -103,7 +103,7 @@ private extension StationListViewModel {
         }
     }
 
-    func resetContentForReload() {
+    func resetStations() {
         stations = []
         source = .offline
         message = nil
