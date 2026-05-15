@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol HTTPClient {
+nonisolated protocol HTTPClient {
     func data(from url: URL) async throws -> Data
 }

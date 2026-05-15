@@ -8,7 +8,7 @@
 import Foundation
 
 /// Adapter for mapping CityBikes API V2 data structures to the app's standardized model format.
-enum CityBikesV2StationMapper {
+nonisolated enum CityBikesV2StationMapper {
     static func mapNetworks(from data: Data) throws -> [Network] {
         let response = try JSONDecoder().decode(NetworksResponse.self, from: data)
 
@@ -53,11 +53,11 @@ enum CityBikesV2StationMapper {
 }
 
 // MARK: - V2 Data Struct
-private struct NetworksResponse: Decodable {
+nonisolated private struct NetworksResponse: Decodable {
     let networks: [CityBikesNetworkPayload]
 }
 
-private struct NetworkResponse: Decodable {
+nonisolated private struct NetworkResponse: Decodable {
     let network: CityBikesNetworkPayload
 }
 
@@ -77,7 +77,7 @@ private struct NetworkResponse: Decodable {
    ]
  },
  */
-private struct CityBikesNetworkPayload: Decodable {
+nonisolated private struct CityBikesNetworkPayload: Decodable {
     let id: String
     let name: String
     let location: CityBikesLocationPayload
@@ -90,7 +90,7 @@ private struct CityBikesNetworkPayload: Decodable {
         case stations
     }
 
-    init(from decoder: Decoder) throws {
+    nonisolated init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
@@ -99,14 +99,14 @@ private struct CityBikesNetworkPayload: Decodable {
     }
 }
 
-private struct CityBikesLocationPayload: Decodable {
+nonisolated private struct CityBikesLocationPayload: Decodable {
     let latitude: Double
     let longitude: Double
     let city: String
     let country: String
 }
 
-private struct CityBikesStationPayload: Decodable {
+nonisolated private struct CityBikesStationPayload: Decodable {
     let id: String
     let name: String
     let latitude: Double
@@ -128,6 +128,6 @@ private struct CityBikesStationPayload: Decodable {
     }
 }
 
-private struct CityBikesStationExtraPayload: Decodable {
+nonisolated private struct CityBikesStationExtraPayload: Decodable {
     let address: String?
 }

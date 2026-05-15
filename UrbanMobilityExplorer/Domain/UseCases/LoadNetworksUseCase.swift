@@ -5,7 +5,7 @@
 //  Created by Jinchao Lin on 2026/5/15.
 //
 
-struct LoadNetworksUseCase {
+nonisolated struct LoadNetworksUseCase {
     private let repository: StationRepository
 
     init(repository: StationRepository) {

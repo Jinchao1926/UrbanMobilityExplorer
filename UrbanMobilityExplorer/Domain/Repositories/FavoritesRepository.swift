@@ -5,7 +5,7 @@
 //  Created by Jinchao Lin on 2026/5/15.
 //
 
-protocol FavoritesRepository {
+nonisolated protocol FavoritesRepository {
     func loadFavorites() async throws -> [FavoriteStation]
 
     func isFavorite(stationID: String, networkID: String) async throws -> Bool

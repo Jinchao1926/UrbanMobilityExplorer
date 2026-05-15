@@ -5,7 +5,7 @@
 //  Created by Jinchao Lin on 2026/5/15.
 //
 
-struct DefaultStationRepository: StationRepository {
+nonisolated struct DefaultStationRepository: StationRepository {
     private let remote: StationDataProvider
     private let cache: StationCacheProvider
     private let offline: StationDataProvider
@@ -66,7 +66,7 @@ struct DefaultStationRepository: StationRepository {
 
 // MARK: - Private
 extension DefaultStationRepository {
-    private func filtered(_ networks: [Network], onlyChina: Bool) -> [Network] {
+    nonisolated private func filtered(_ networks: [Network], onlyChina: Bool) -> [Network] {
         onlyChina ? networks.filter { $0.country == "CN" } : networks
     }
 }

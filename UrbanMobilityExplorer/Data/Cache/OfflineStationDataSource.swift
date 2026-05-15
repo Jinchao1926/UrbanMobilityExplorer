@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OfflineStationDataSource: StationDataProvider {
+nonisolated struct OfflineStationDataSource: StationDataProvider {
     private let bundle: Bundle
     private let decoder = JSONDecoder()
 
@@ -28,7 +28,7 @@ struct OfflineStationDataSource: StationDataProvider {
 
 // MARK: - Private
 extension OfflineStationDataSource {
-    private func load<T: Decodable>(_ type: T.Type, resource: String) throws -> T {
+    nonisolated private func load<T: Decodable>(_ type: T.Type, resource: String) throws -> T {
         guard let url = bundle.url(forResource: resource, withExtension: "json") else {
             throw CocoaError(.fileNoSuchFile)
         }

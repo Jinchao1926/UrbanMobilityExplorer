@@ -8,7 +8,7 @@
 import Foundation
 
 /// Provides CityBikes v2 station capacities.
-struct CityBikesV2StationService: StationDataProvider {
+nonisolated struct CityBikesV2StationService: StationDataProvider {
     private static var defaultBaseURL: URL {
         var components = URLComponents()
         components.scheme = "https"

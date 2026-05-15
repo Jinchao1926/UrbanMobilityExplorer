@@ -5,7 +5,7 @@
 //  Created by Jinchao Lin on 2026/5/15.
 //
 
-struct DefaultFavoritesRepository: FavoritesRepository {
+nonisolated struct DefaultFavoritesRepository: FavoritesRepository {
     private let cache: FavoritesCacheProvider
 
     // MARK: - LifeCycle

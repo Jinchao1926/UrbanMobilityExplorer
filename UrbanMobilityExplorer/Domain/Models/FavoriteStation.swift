@@ -8,7 +8,7 @@
 import Foundation
 
 /// The `FavoriteStation` structure
-struct FavoriteStation: Identifiable, Codable, Hashable, Sendable {
+nonisolated struct FavoriteStation: Identifiable, Codable, Hashable, Sendable {
     let id: String
     let station: Station
     let networkID: String
@@ -43,7 +43,7 @@ extension FavoriteStation {
         case savedAt
     }
 
-    init(from decoder: Decoder) throws {
+    nonisolated init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         id = try container.decode(String.self, forKey: .id)
@@ -57,7 +57,7 @@ extension FavoriteStation {
 }
 
 private extension String {
-    var nilIfBlank: String? {
+    nonisolated var nilIfBlank: String? {
         let trimmed = trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmed.isEmpty ? nil : trimmed
     }

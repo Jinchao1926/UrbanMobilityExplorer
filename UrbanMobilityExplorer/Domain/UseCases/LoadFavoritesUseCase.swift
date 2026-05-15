@@ -5,7 +5,7 @@
 //  Created by Jinchao Lin on 2026/5/15.
 //
 
-struct LoadFavoritesUseCase {
+nonisolated struct LoadFavoritesUseCase {
     private let repository: FavoritesRepository
 
     init(repository: FavoritesRepository) {

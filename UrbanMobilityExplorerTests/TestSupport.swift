@@ -8,7 +8,7 @@
 import Foundation
 @testable import UrbanMobilityExplorer
 
-final class InMemoryStationCacheProvider: StationCacheProvider {
+nonisolated final class InMemoryStationCacheProvider: StationCacheProvider {
     private var networks: [Network]
     private var stationsByNetworkID: [String: [Station]]
     private var lastSavedNetworks: [Network]?
@@ -49,7 +49,7 @@ final class InMemoryStationCacheProvider: StationCacheProvider {
     }
 }
 
-final class InMemoryFavoritesCacheProvider: FavoritesCacheProvider {
+nonisolated final class InMemoryFavoritesCacheProvider: FavoritesCacheProvider {
     private var favorites: [FavoriteStation]
 
     init(favorites: [FavoriteStation] = []) {
@@ -65,7 +65,7 @@ final class InMemoryFavoritesCacheProvider: FavoritesCacheProvider {
     }
 }
 
-struct StubStationDataProvider: StationDataProvider {
+nonisolated struct StubStationDataProvider: StationDataProvider {
     var networksResult: Result<[Network], Error> = .success([])
     var stationsResult: Result<[Station], Error> = .success([])
 
@@ -78,7 +78,7 @@ struct StubStationDataProvider: StationDataProvider {
     }
 }
 
-final class StubStationRepository: StationRepository {
+nonisolated final class StubStationRepository: StationRepository {
     var networkResults: [Result<[Network], Error>]
     var stationResultsByNetworkID: [String: [Result<StationLoadResult, Error>]]
     var loadStationsHandler: ((Network) async throws -> StationLoadResult)?
@@ -121,7 +121,7 @@ final class StubStationRepository: StationRepository {
     }
 }
 
-enum TestData {
+nonisolated enum TestData {
     static let olderDate = Date(timeIntervalSince1970: 1_700_000_000)
     static let newerDate = Date(timeIntervalSince1970: 1_800_000_000)
 
@@ -161,6 +161,6 @@ enum TestData {
     }
 }
 
-enum TestError: Error {
+nonisolated enum TestError: Error {
     case expected
 }
