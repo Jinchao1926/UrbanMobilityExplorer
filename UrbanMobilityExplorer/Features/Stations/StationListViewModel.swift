@@ -14,6 +14,8 @@ final class StationListViewModel: ObservableObject {
     @Published private(set) var networks: [Network] = []
     @Published private(set) var selectedNetwork: Network?
     @Published var showsOnlyChinaNetworks = true
+    @Published var searchText = ""
+    @Published var sortOption = StationSortOption.mostBikes
 
     private let loadNetworksUseCase: LoadNetworksUseCase
     private let loadStationsUseCase: LoadStationsUseCase
@@ -21,6 +23,8 @@ final class StationListViewModel: ObservableObject {
     private var stations: [Station] = []
     private var source: StationDataSource = .offline
     private var message: String?
+    /// Request token
+    private var loadGeneration = 0
 
     // MARK: - LifeCycle
     init(
@@ -34,7 +38,25 @@ final class StationListViewModel: ObservableObject {
 
 // MARK: - Stations
 extension StationListViewModel {
+    var visibleStations: [Station] {
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        return stations
+            .filter { station in
+                query.isEmpty ||
+                station.name.localizedCaseInsensitiveContains(query) ||
+                station.address.localizedCaseInsensitiveContains(query)
+            }
+            .sorted(using: sortOption)
+    }
+
+    var isFiltering: Bool {
+        !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
     func loadStations() async {
+        loadGeneration += 1
+        let requestID = loadGeneration
         let keepsExistingContent = currentContent != nil
 
         if keepsExistingContent {
@@ -44,7 +66,9 @@ extension StationListViewModel {
         }
 
         do {
-            try await refreshNetworks(onlyChina: showsOnlyChinaNetworks)
+            let fetchedNetworks = try await loadNetworksUseCase(onlyChina: showsOnlyChinaNetworks)
+            guard isCurrentLoad(requestID) else { return }
+            applyNetworks(fetchedNetworks)
 
             guard let selectedNetwork else {
                 stations = []
@@ -55,11 +79,17 @@ extension StationListViewModel {
             }
 
             let result = try await loadStationsUseCase(for: selectedNetwork)
+            guard isCurrentLoad(requestID) else { return }
+
             stations = result.stations
             source = result.source
             message = sourceMessage(for: result.source)
             publish(isRefreshing: false)
+        } catch is CancellationError {
+            return
         } catch {
+            guard isCurrentLoad(requestID) else { return }
+
             let failureMessage = "Unable to refresh station data. Showing the last available result."
 
             if keepsExistingContent {
@@ -104,14 +134,20 @@ private extension StationListViewModel {
     }
 
     func resetStations() {
+        loadGeneration += 1
         stations = []
         source = .offline
         message = nil
         state = .loading
     }
 
-    func refreshNetworks(onlyChina: Bool) async throws {
-        let fetchedNetworks = try await loadNetworksUseCase(onlyChina: onlyChina)
+    /// Request token used to identify the latest network request.
+    /// Ensures old request responses do not overwrite new network or refreshed results.
+    func isCurrentLoad(_ requestID: Int) -> Bool {
+        requestID == loadGeneration && !Task.isCancelled
+    }
+
+    func applyNetworks(_ fetchedNetworks: [Network]) {
         networks = fetchedNetworks
 
         guard !fetchedNetworks.isEmpty else {
